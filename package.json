@@ -4,17 +4,45 @@
     "author": "ZaninAndrea",
     "homepage": "./",
     "description": "An example of an autoupdating electron app",
-    "repository": "https://github.com/ZaninAndrea/electron-autoupdate-example",
+    "repository": "https://github.com/Tahlil/electron-autoupdate-example",
     "main": "electron.js",
+    "build": {
+        "appId": "803803",
+        "dmg": {
+            "contents": [
+                {
+                    "x": 110,
+                    "y": 150
+                },
+                {
+                    "x": 240,
+                    "y": 150,
+                    "type": "link",
+                    "path": "/Applications"
+                }
+            ]
+        },
+        "linux": {
+            "target": [
+                "AppImage",
+                "deb"
+            ]
+        },
+        "win": {
+            "target": "NSIS"
+        }
+    },
     "dependencies": {
-        "electron-updater": "^2.10.1"
+        "bootstrap": "^4.2.1",
+        "electron-updater": "4.0.6"
     },
     "scripts": {
+        "electron": "electron .",
         "build": "build --win",
-        "ship": "build --win -p always"
+        "ship": "build --win -p always --config electron-builder.yml"
     },
     "devDependencies": {
         "electron": "^1.7.5",
-        "electron-builder": "^19.20.1"
+        "electron-builder": "20.38.5"
     }
 }
